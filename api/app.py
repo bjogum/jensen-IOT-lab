@@ -81,11 +81,17 @@ def create_measurement():
         return jsonify({"errors": errors}), 400
 
     # TODO M1:
-    # Kontrollera med device_exists(...) att deviceId tillhör en känd sensor.
+    deviceId = data.get("deviceId")
+    # Kontrollera med device_exists() att deviceId tillhör en känd sensor.
     # Okänd sensor ska ge 400 med ett tydligt JSON-fel.
-    #
+    if not device_exists(deviceId):
+        return jsonify({"error":"Sensor IDt saknas: {deviceId}"}), 400
+    
     # Spara till PostgreSQL via insert_measurement(data).
-    #
+    insert_measurement(data)
+    
+
+
     # TODO M2:
     # Uppdatera latest-cache för sensorn.
     #
