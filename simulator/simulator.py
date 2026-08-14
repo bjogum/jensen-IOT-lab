@@ -6,9 +6,9 @@ import requests
 API_URL = os.getenv("API_URL", "http://api:5000")
 
 SENSORS = [
-    {"deviceId": "sensor-101", "temp": (20, 23)}, # Correct: sensor-001
-    {"deviceId": "sensor-202", "temp": (18, 21)}, # Correct: sensor-002
-    {"deviceId": "sensor-303", "temp": (22, 25)}, # Correct: sensor-003
+    {"deviceId": "sensor-001", "temp": (20, 23)},
+    {"deviceId": "sensor-002", "temp": (18, 21)},
+    {"deviceId": "sensor-003", "temp": (22, 25)},
 ]
 
 
