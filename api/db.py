@@ -55,7 +55,18 @@ def device_exists(device_id):
     # TODO M1:
     # Kontrollera om device_id finns i tabellen devices.
     # Returnera True eller False.
-    return False
+    conn = get_connection()
+    cursor = conn.cursor()
+    sql_query = "SELECT 1 FROM devices WHERE device_id = %s;"
+    cursor.execute(sql_query, (device_id,))
+    result = cursor.fetchone()
+    cursor.close()
+    conn.close()
+
+    if result is not None:
+        return True
+    else:
+        return False
 
 
 def get_latest_measurement(device_id):
