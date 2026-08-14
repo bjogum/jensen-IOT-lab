@@ -52,7 +52,7 @@ def get_measurements():
 
 
 def device_exists(device_id):
-    # TODO M1:
+    # -TODO M1-1:
     # Kontrollera om device_id finns i tabellen devices.
     # Returnera True eller False.
     conn = get_connection()
@@ -66,18 +66,18 @@ def device_exists(device_id):
 
 
 def get_latest_measurement(device_id):
-    # TODO M1:
+    # TODO M1-2:
     # Implementera senaste mätvärdet för en sensor.
     return None
 
 
 def get_measurements_for_device(device_id):
-    # TODO M1:
+    # TODO M1-3:
     # Implementera historik för en sensor.
     return []
 
 
 def insert_measurement(data):
-    # TODO M1:
+    # TODO M1-4:
     # Spara ett validerat mätvärde i PostgreSQL.
     return None

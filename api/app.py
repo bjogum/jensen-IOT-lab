@@ -45,7 +45,7 @@ def measurements():
 
 @app.get("/devices/<device_id>/latest")
 def latest(device_id):
-    # TODO M1:
+    # TODO M1-2:
     # Läs senaste mätningen från PostgreSQL med get_latest_measurement(...).
     # Returnera 404 om sensorn eller en mätning saknas.
     #
@@ -62,7 +62,7 @@ def latest(device_id):
 
 @app.get("/devices/<device_id>/measurements")
 def device_history(device_id):
-    # TODO M1:
+    # TODO M1-3:
     # Hämta sensorhistorik från PostgreSQL.
     # Känd sensor utan mätningar: 200 och []. Okänd sensor: 404.
     return jsonify({
@@ -80,7 +80,7 @@ def create_measurement():
         print(f"INVALID measurement from {data.get('deviceId', 'unknown')}: {errors}")
         return jsonify({"errors": errors}), 400
 
-    # TODO M1:
+    # -TODO M1-1:
     deviceId = data.get("deviceId")
     # Kontrollera med device_exists() att deviceId tillhör en känd sensor.
     # Okänd sensor ska ge 400 med ett tydligt JSON-fel.
