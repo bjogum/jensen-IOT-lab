@@ -62,11 +62,7 @@ def device_exists(device_id):
     result = cursor.fetchone()
     cursor.close()
     conn.close()
-
-    if result is not None:
-        return True
-    else:
-        return False
+    return result is not None
 
 
 def get_latest_measurement(device_id):
