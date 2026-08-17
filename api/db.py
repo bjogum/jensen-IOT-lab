@@ -83,7 +83,7 @@ def insert_measurement(data):
     conn = get_connection()
     cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
     sql_query = """
-        INSERT INTO measurements (device_id, temperature, humidityhum, battery) 
+        INSERT INTO measurements (device_id, temperature, humidity, battery) 
         VALUES (%s, %s, %s, %s) 
         RETURNING *;
     """
