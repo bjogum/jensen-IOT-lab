@@ -96,9 +96,9 @@ def get_statistics():
     conn.close()
 
     return {
-        "total_devices": cnt_device["device_count"],
-        "total_measurements": cnt_meas["measurement_count"],
-        "average_temperature": avg_tmp["avg_temp"],
+        "total_devices": cnt_device["device_cnt"],
+        "total_measurements": cnt_meas["meas_cnt"],
+        "average_temperature": avg_tmp["avg_tmp"],
         "average_humidity": avg_hum["avg_hum"]
     }
 
