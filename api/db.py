@@ -64,6 +64,44 @@ def device_exists(device_id):
     conn.close()
     return result is not None
 
+def get_statistics():
+    conn = get_connection()
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+    sql_cnt_device = """
+        SELECT COUNT(*) AS device_cnt FROM devices;
+    """
+    sql_cnt_meas = """
+        SELECT COUNT(*) AS meas_cnt FROM measurements;
+    """
+    sql_avg_temp = """
+        SELECT AVG("temperature") AS avg_tmp FROM measurements;
+    """
+    sql_avg_hum = """
+        SELECT AVG("humidity") AS avg_hum FROM measurements;
+    """
+    cursor.execute(sql_cnt_device)
+    cnt_device = cursor.fetchone()
+
+    cursor.execute(sql_cnt_meas)
+    cnt_meas = cursor.fetchone()
+
+    cursor.execute(sql_avg_temp)
+    avg_tmp = cursor.fetchone()
+    
+    cursor.execute(sql_avg_hum)
+    avg_hum = cursor.fetchone()
+
+    
+    cursor.close()
+    conn.close()
+
+    return {
+        "total_devices": cnt_device["device_count"],
+        "total_measurements": cnt_meas["measurement_count"],
+        "average_temperature": avg_tmp["avg_temp"],
+        "average_humidity": avg_hum["avg_hum"]
+    }
+
 
 def get_latest_measurement(device_id):
     # TODO M1-2:
