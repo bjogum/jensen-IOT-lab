@@ -78,7 +78,7 @@ def get_measurements_for_device(device_id):
 
 
 def insert_measurement(data):
-    # TODO M1-4:
+    # -TODO M1-4:
     # Spara ett validerat mätvärde i PostgreSQL.
     conn = get_connection()
     cursor = conn.cursor()
