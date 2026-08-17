@@ -77,11 +77,13 @@ def get_latest_measurement(device_id):
         LIMIT 1;
     """
     cursor.execute(sql_squery, (device_id,))
-    result = cursor.fetchall()
+    result = cursor.fetchone()
     cursor.close()
     conn.close()
 
-    return _json_ready(result)
+    if result:
+        return _json_ready(result)
+    return None
 
 
 def get_measurements_for_device(device_id):
