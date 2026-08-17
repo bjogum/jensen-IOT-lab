@@ -81,9 +81,9 @@ def insert_measurement(data):
     # -TODO M1-4:
     # Spara ett validerat mätvärde i PostgreSQL.
     conn = get_connection()
-    cursor = conn.cursor()
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
     sql_query = """
-        INSERT INTO mesaurements (device_id, temp, hum, batt) 
+        INSERT INTO measurements (device_id, temperature, humidityhum, battery) 
         VALUES (%s, %s, %s, %s) 
         RETURNING *;
     """
@@ -100,4 +100,4 @@ def insert_measurement(data):
     cursor.close()
     conn.close()
 
-    return new_row
+    return _json_ready(new_row)

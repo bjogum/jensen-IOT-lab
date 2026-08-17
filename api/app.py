@@ -98,7 +98,7 @@ def create_measurement():
     # Under starter-fasen returneras 202 så att simulatorn kan köras
     # även innan studenten implementerat persistensen.
     print(f"VALID measurement received: {data}")
-    return jsonify({"status": "accepted", "measurement": data}), 201
+    return jsonify({"status": "created", "measurement": data}), 201
 
 
 @app.get("/statistics")
