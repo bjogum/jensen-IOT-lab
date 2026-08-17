@@ -80,4 +80,24 @@ def get_measurements_for_device(device_id):
 def insert_measurement(data):
     # TODO M1-4:
     # Spara ett validerat mätvärde i PostgreSQL.
-    return None
+    conn = get_connection()
+    cursor = conn.cursor()
+    sql_query = """
+        INSERT INTO mesaurements (device_id, temp, hum, batt) 
+        VALUES (%s, %s, %s, %s) 
+        RETURNING *;
+    """
+
+    device_id = data.get("deviceId")
+    temp = data.get("temperature")
+    hum = data.get("humidity")
+    batt = data.get("battery")
+
+    cursor.execute(sql_query, (device_id, temp, hum, batt))
+    new_row = cursor.fetchone()
+    conn.commit()
+
+    cursor.close()
+    conn.close()
+
+    return new_row
