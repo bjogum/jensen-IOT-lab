@@ -48,6 +48,11 @@ def latest(device_id):
     # TODO M1-2:
     # Läs senaste mätningen från PostgreSQL med get_latest_measurement(...).
     # Returnera 404 om sensorn eller en mätning saknas.
+    result = get_latest_measurement(device_id)
+    if not result:
+        return jsonify({"error": f"Measurements missing for: {device_id}"}), 404
+    return jsonify(result), 200
+
     #
     # TODO M2:
     # Utöka M1-lösningen med cache-aside:
@@ -65,6 +70,12 @@ def device_history(device_id):
     # TODO M1-3:
     # Hämta sensorhistorik från PostgreSQL.
     # Känd sensor utan mätningar: 200 och []. Okänd sensor: 404.
+    if not device_exists(device_id):
+        return jsonify({"error": f"Unknown device: {device_id}"}), 404
+
+    result = get_measurements_for_device(device_id)
+    return jsonify(result), 200
+
     return jsonify({
         "message": "TODO: implementera device history",
         "deviceId": device_id
@@ -85,7 +96,7 @@ def create_measurement():
     # Kontrollera med device_exists() att deviceId tillhör en känd sensor.
     # Okänd sensor ska ge 400 med ett tydligt JSON-fel.
     if not device_exists(deviceId):
-        return jsonify({"error": f"Sensor ID saknas: {deviceId}"}), 400
+        return jsonify({"error": f"Sensor ID is missing: {deviceId}"}), 400
     
     # Spara till PostgreSQL via insert_measurement(data).
     insert_measurement(data)
