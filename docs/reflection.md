@@ -9,7 +9,7 @@ Svara kort men motiverat på samtliga frågor. Knyt svaren till vad du implement
    -  Man vill bara lagra relevant data som ger värde. Dessutom är det fördelaktigt att hålla databasen strukturerad, tydlig och ren. 
 
 3. Varför passar PostgreSQL för historiska mätvärden?
-   - Den lagrar data permanent och kan hantera stora mängder data. SQL gör det också effektivt och smidigt att söka efter och analysera historiska mätvärden.
+   - Den lagrar data permanent och kan hantera stora mängder data. SQL gör det också effektivt och smidigt att söka och analysera historiska mätvärden.
 
 4. Vad händer med lösningen om Redis försvinner?
    - Svaren blir lite långsammare då cache saknas, dessutom får databasen får jobba hårdare.
