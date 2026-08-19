@@ -6,7 +6,7 @@ Svara kort men motiverat på samtliga frågor. Knyt svaren till vad du implement
    - API:t fungerar som ett mellanlager mellan sensorerna och databasen. Det tar emot, validerar och filtrerar data så att endast korrekt formaterad data lagras i databasen. Detta gör också databasen säkrare, eftersom det bara är API:t som får kommunicera med databasen.
 
 2. Varför ska felaktig sensordata stoppas innan den sparas?
-   -  Man bara lagra relevant data som ger värde. Dessutom är det fördelaktigt att hålla databasen strukturerad, tydlig och ren. 
+   -  Man vill bara lagra relevant data som ger värde. Dessutom är det fördelaktigt att hålla databasen strukturerad, tydlig och ren. 
 
 3. Varför passar PostgreSQL för historiska mätvärden?
    - Den lagrar data permanent och kan hantera stora mängder data. SQL gör det också effektivt och smidigt att söka efter och analysera historiska mätvärden.
