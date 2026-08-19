@@ -46,24 +46,32 @@ def measurements():
 
 @app.get("/devices/<device_id>/latest")
 def latest(device_id):
-    # TODO M1-2:
+    # -TODO M1-2:
     # Läs senaste mätningen från PostgreSQL med get_latest_measurement(...).
     # Returnera 404 om sensorn eller en mätning saknas.
+
+    # A: Checka & retunera om cache finns 
+    cached_result = get_latest_from_cache(device_id)
+    if cached_result:
+        return jsonify(cached_result), 200
+
+    # B: Checka DB
     result = get_latest_measurement(device_id)
     if not result:
         return jsonify({"error": f"Measurements missing for: {device_id}"}), 404
+    
+    # C: Lagra DB svar i cache.
+    set_latest_in_cache(device_id, result)
+
+    # D: Retunera DB svar
     return jsonify(result), 200
 
-    #
-    # TODO M2:
+
+    # -TODO M2:
     # Utöka M1-lösningen med cache-aside:
     # 1. Försök läsa från Redis.
     # 2. Vid cache miss: läs från PostgreSQL.
     # 3. Spara databasresultatet i Redis.
-    return jsonify({
-        "message": "TODO: implementera latest measurement",
-        "deviceId": device_id
-    }), 501
 
 
 @app.get("/devices/<device_id>/measurements")
@@ -71,6 +79,7 @@ def device_history(device_id):
     # TODO M1-3:
     # Hämta sensorhistorik från PostgreSQL.
     # Känd sensor utan mätningar: 200 och []. Okänd sensor: 404.
+
     if not device_exists(device_id):
         return jsonify({"error": f"Unknown device: {device_id}"}), 404
 
@@ -101,10 +110,11 @@ def create_measurement():
     
     # Spara till PostgreSQL via insert_measurement(data).
     insert_measurement(data)
+    set_latest_in_cache(deviceId, data)
     
 
 
-    # TODO M2:
+    # -TODO M2:
     # Uppdatera latest-cache för sensorn.
     #
     # Under starter-fasen returneras 202 så att simulatorn kan köras
@@ -117,7 +127,7 @@ def create_measurement():
 def statistics():
     # ⭐ Utmaning:
     # Returnera antal devices, antal measurements, avg temp etc.
-    
+
     stat = get_statistics()
     return jsonify(stat)
 
