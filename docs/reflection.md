@@ -21,15 +21,20 @@ Svara kort men motiverat på samtliga frågor. Knyt svaren till vad du implement
    - För att kunna köra hela applikationen lokalt med alla tjänster och beroenden i en gemensam miljö.
 
 7. Vad automatiserar din CI-pipeline?
-   - ...
+   - Den automatiserar det jag definierat i .github/workflows/ci.yml vilket är:
+     - Vid push eller pull-request triggas pipelinen
+       1. Checkout av koden
+       2. Installerar alla beroenden utifrån 'requirements.txt'
+       3. Kör alla tester via Pytest 
+       4. Bygger Docker-image
 
 8. Vad observerade du när du tog bort en Kubernetes Pod?
-   - ...
+   - En ny pod skapades omedelbart, vilket är syftet med self-healing.
 
 9.  Varför kan flera repliker ge högre tillgänglighet?
-   - ...
+   - Om en Pod kraschar kan de andra replikerna fortsätta hantera trafik, vilket ger högre tillgänglighet.
 
 10. När hade Kubernetes varit overkill för en lösning?
-   - ...
+   - Om applikationen är liten och enkel och bara körs på en server, där Docker Compose eller vanlig Docker hade räckt. Då skapar Kubernetes mer komplexitet än vad det ger nytta.
 
 Spara svaren i denna fil. Arkitekturdiagrammet lämnas separat enligt `docs/architecture.md`.
