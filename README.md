@@ -3,7 +3,7 @@
 ## Beskrivning
 **Allmänt**
 
-Projektet är en enkel IoT-plattform där tre simulerade sensorer skickar temperatur, luftfuktighet och batterinivå till ett REST API. API:t validerar datan och lagrar mätningarna i PostgreSQL. Redis används som cache för den senaste mätningen och senaste förfrågan.
+Projektet är en enkel IoT-plattform där tre simulerade sensorer skickar temperatur, luftfuktighet och batterinivå till ett REST API. API:t bygger på en Flask-applikation som validerar datan och lagrar mätningarna i PostgreSQL. Redis används som cache för den senaste mätningen och senaste förfrågan.
 
 API:t körs med Docker Compose tillsammans med PostgreSQL, Redis och simulatorn. Utöver det finns även en CI-pipeline med GitHub-Actions, som kör tester och bygger Docker-image.
 
@@ -29,7 +29,6 @@ docker compose up --build -d
 ```
 
 **Kontrollera status**
-
 ```bash
 docker compose ps
 ```
@@ -39,6 +38,28 @@ Följande tjänster ska nu köras:
  - jensen-iot-api
  - jensen-iot-simulator
 
+**Kontrollera simulator-loggen**
+För live övervakning (avsluta med `ctrl+c`):
+```bash
+docker compose logs -f api simulator
+```
+För senaste 50 loggarna:
+```bash
+docker compose logs --tail=50 api simulator
+```
+
+## API-dashboard
+För att visa `API dashboarden` - öppna adressen nedan i din webbläsare:
+```bash
+http://localhost:5001/
+```
+
+**Implementerade endpoints**
+- `/health`
+- `/devices`
+- `/measurements`
+- `/statistics`
+- `/devices/<device-ID>/latest` (ersätt device-ID med specifik sensor)
 
 **Kör tester**
 ```bash
