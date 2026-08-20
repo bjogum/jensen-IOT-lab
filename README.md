@@ -7,7 +7,7 @@ Projektet är en enkel IoT-plattform där tre simulerade sensorer skickar temper
 
 API:t körs med Docker Compose tillsammans med PostgreSQL, Redis och simulatorn. Utöver det finns även en CI-pipeline med GitHub-Actions, som kör tester och bygger Docker-image.
 
-Kubernetes används till containerorkestrering. API:t körs med tre Poddar (repliker) och en Service som fördelar trafiken mellan dem.
+Kubernetes används för containerorkestrering. API:t körs med tre Poddar (repliker) och en Service som fördelar trafiken mellan dem.
 
 **Förutsättningar**
 
@@ -20,19 +20,18 @@ För att köra projektet behövs:
 ## Hur applikationen används
 **Klona repot**
 ```bash
-- git clone https://github.com/bjogum/jensen-IOT-lab.git
+git clone https://github.com/bjogum/jensen-IOT-lab.git
 ```
 
 **Starta applikationen**
 ```bash
-  - docker compose up --build -d
+docker compose up --build -d
 ```
 
 **Kontrollera status**
 
-Kör kommandot nedan:
 ```bash
-  - docker ps
+docker compose ps
 ```
 Följande tjänster ska nu köras:
  - jensen-iot-redis 
@@ -43,12 +42,33 @@ Följande tjänster ska nu köras:
 
 **Kör tester**
 ```bash
-  - docker compose exec api python -m pytest -q
+docker compose exec api python -m pytest -q
 ```
+Resultatet ska bli '7 passed' - vilket betyder att samtliga tester har genomförts med lyckat resultat.
 
-**Begränsningar**
-  - ...
 
+## CI-pipeline
+CI-piplinen är definierad med samtliga instruktioner i "ci.yml". Vid push eller pull-request triggas GitHub-actions. Alla beroenden installeras, tester körs och docker-image skapas. Grön markering visar att körningene gått igenom med lyckat resultat.  
+
+
+## Kubernetes
+Kubernetes-delen körs med Minikube. API:t distribueras med tre Pod-repliker och en Service.
+
+...
+...
+
+```bash
+kubectl get pods
+```
+...
+
+## Kända begränsningar
+Kubernetes-delen är en introducerande demo där endast API:t distribueras. PostgreSQL, Redis och sensorsimulatorn körs fortfarande med Docker Compose och ingår inte i Kubernetes-deployen.
+
+
+## Begränsningar
+...
+...
 
 
 ## Svar från: "Grundläggande SQL-uppgifter"
