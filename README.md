@@ -28,6 +28,19 @@ För att köra projektet behövs:
   - docker compose up --build -d
 ```
 
+**Kontrollera status**
+Följande tjänster ska köras:
+ - jensen-iot-redis 
+ - jensen-iot-db
+ - jensen-iot-api
+ - jensen-iot-simulator
+```bash
+  - docker ps
+```
+```bash
+  - 
+```
+
 **Kör tester**
 ```bash
   - docker compose exec api python -m pytest -q
