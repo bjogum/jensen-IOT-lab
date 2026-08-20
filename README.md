@@ -3,7 +3,7 @@
 ## Beskrivning
 **Allmänt**
 
-Projektet är en enkel IoT-plattform där tre simulerade sensorer skickar temperatur, luftfuktighet och batterinivå till ett REST API. API:t bygger på en Flask-applikation som validerar datan och lagrar mätningarna i PostgreSQL. Redis används som cache för den senaste mätningen och senaste förfrågan.
+Projektet är en enkel IoT-plattform där tre simulerade sensorer skickar temperatur, luftfuktighet och batterinivå till ett REST API. API:t bygger på en Flask-applikation som validerar datan och lagrar mätningarna i PostgreSQL. Redis används som cache för den senaste mätningen.
 
 API:t körs med Docker Compose tillsammans med PostgreSQL, Redis och simulatorn. Utöver det finns även en CI-pipeline med GitHub-Actions, som kör tester och bygger Docker-image.
 
@@ -39,6 +39,7 @@ Följande tjänster ska nu köras:
  - jensen-iot-simulator
 
 **Kontrollera simulator-loggen**
+
 För live övervakning (avsluta med `ctrl+c`):
 ```bash
 docker compose logs -f api simulator
@@ -55,13 +56,31 @@ http://localhost:5001/
 ```
 
 **Implementerade endpoints**
+
+Dessa endpoints går att använda för att hämta specifik data från API:t
 - `/health`
 - `/devices`
 - `/measurements`
 - `/statistics`
-- `/devices/<device-ID>/latest` (ersätt device-ID med specifik sensor)
+- `/devices/<device-ID>/latest` (ersätt `<device-ID>` med specifik sensor)
 
-**Kör tester**
+**Kontrollera cache**
+
+Redis lagrar cache för de senaste mätvärdet för respektive sensor. Kontrollera vilka sensorer som finns lagrade i cache:
+
+```bash
+docker compose exec redis redis-cli KEYS "latest:*"
+```
+Töm Redis helt och prova gör en ny kontroll
+```bash
+docker compose exec redis redis-cli FLUSHDB
+```
+
+
+
+## Kör tester
+
+Projektets tester körs med pytest och kontrollerar valideringen av inkommande sensordata. För att köra testerna använd:
 ```bash
 docker compose exec api python -m pytest -q
 ```
@@ -73,15 +92,21 @@ CI-piplinen är definierad med samtliga instruktioner i "ci.yml". Vid push eller
 
 
 ## Kubernetes
-Kubernetes-delen körs med Minikube. API:t distribueras med tre Pod-repliker och en Service.
-
-...
-...
-
+Kubernetes-delen körs med Minikube. API:t distribueras med tre Pod-repliker och en Service. Starta minikube och bygg imagen:
 ```bash
+minikube start --driver=docker
+minikube status
+minikube image build -t jensen-iot-api:lab ./api
+kubectl apply -f k8s/deployment.yaml
+kubectl apply -f k8s/service.yaml
 kubectl get pods
 ```
-...
+
+Vänta tills alla tre poddar är aktiva `READY` & `1/1`. För att sen nå tjänsten använd:
+```bash
+minikube service jensen-iot-api
+```
+
 
 ## Kända begränsningar
 Kubernetes-delen är en introducerande demo där endast API:t distribueras. PostgreSQL, Redis och sensorsimulatorn körs fortfarande med Docker Compose och ingår inte i Kubernetes-deployen.
