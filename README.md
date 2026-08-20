@@ -29,17 +29,17 @@ För att köra projektet behövs:
 ```
 
 **Kontrollera status**
-Följande tjänster ska köras:
+
+Kör kommandot nedan:
+```bash
+  - docker ps
+```
+Följande tjänster ska nu köras:
  - jensen-iot-redis 
  - jensen-iot-db
  - jensen-iot-api
  - jensen-iot-simulator
-```bash
-  - docker ps
-```
-```bash
-  - 
-```
+
 
 **Kör tester**
 ```bash
