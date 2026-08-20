@@ -9,6 +9,9 @@ API:t körs med Docker Compose tillsammans med PostgreSQL, Redis och simulatorn.
 
 Kubernetes används för containerorkestrering. API:t körs med tre Poddar (repliker) och en Service som fördelar trafiken mellan dem.
 
+[Länk till projektets arkitektur](https://github.com/bjogum/docs/architecture.md)
+
+
 **Förutsättningar**
 
 För att köra projektet behövs:
@@ -138,8 +141,9 @@ minikube stop
 Kubernetes-delen är en enklare lösning där endast API:t distribueras. PostgreSQL, Redis och simulatorn körs fortfarande med Docker Compose och ingår inte i detta projektet.
 
 
-## Svar från: "Grundläggande SQL-uppgifter"
-#### Tre SQL frågor
+
+## Övrigt komplettering för labben
+#### Grundläggande SQL-uppgifter - tre SQL frågor
 - SELECT COUNT(*) FROM measurements;
   - Visar antal mätningar (totalt)
 
@@ -148,3 +152,7 @@ Kubernetes-delen är en enklare lösning där endast API:t distribueras. Postgre
 
 - SELECT * FROM measurements WHERE created_at >= NOW() - INTERVAL '24 hours';
   - Visar alla mätningar som skapats senaste 24h
+
+#### Länk till reflektioner
+
+[Reflektioner](https://github.com/bjogum/docs/reflection.md)
