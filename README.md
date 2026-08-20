@@ -135,7 +135,7 @@ minikube stop
 ```
 
 ## Kända begränsningar
-Kubernetes-delen är en enklare lösning där endast API:t distribueras. PostgreSQL, Redis och sensorsimulatorn körs fortfarande med Docker Compose och ingår inte i detta projektet.
+Kubernetes-delen är en enklare lösning där endast API:t distribueras. PostgreSQL, Redis och simulatorn körs fortfarande med Docker Compose och ingår inte i detta projektet.
 
 
 ## Svar från: "Grundläggande SQL-uppgifter"
