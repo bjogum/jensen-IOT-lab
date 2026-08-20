@@ -1,7 +1,7 @@
 # Arkitekturdiagram
 
 ## API-systemet
-![Arkitektur](arkitektur.png)
+![Arkitektur](api.png)
 
 ## Kubernetes
 ![Kubernetes](kub.png)
