@@ -3,7 +3,7 @@
 Svara kort men motiverat på samtliga frågor. Knyt svaren till vad du implementerade och observerade i laborationen; enstaka ja/nej-svar är inte tillräckliga. Ersätt instruktionstexten med dina svar före inlämning.
 
 1. **Varför ska sensorerna kommunicera med ett API i stället för direkt med PostgreSQL?**
-   - APIt fungerar som ett mellanlager mellan sensorerna och databasen. Det tar emot och validerar datan, så att endast giltig data lagras och att formatet är korrekt. Detta gör också databasen säkrare, eftersom all databashantering måste gå via APIt.
+   - APIt fungerar som ett mellanlager mellan sensorerna och databasen. Det tar emot och validerar datan innan den lagras. Detta gör också databasen säkrare, eftersom all databashantering måste gå via APIt.
 
 2. **Varför ska felaktig sensordata stoppas innan den sparas?**
    -  Man vill bara lagra relevant data som ger värde. Dessutom är det fördelaktigt att hålla databasen strukturerad, tydlig och ren. 
@@ -12,7 +12,7 @@ Svara kort men motiverat på samtliga frågor. Knyt svaren till vad du implement
    - Den lagrar data permanent och kan hantera stora mängder data. SQL gör det också effektivt och smidigt att söka och analysera historiska mätvärden, utifrån specifik data som sensor-ID eller datumstämpel etc.
 
 4. **Vad händer med lösningen om Redis försvinner?**
-   - Svaren blir lite långsammare då cache saknas. Alla frågor går då direkt mot databasen vilket innebär att den får databasen får jobba hårdare.
+   - Svaren blir lite långsammare eftersom cache saknas. Alla frågor går då direkt mot databasen, vilket innebär att databasen får arbeta hårdare.
 
 5. **Vad händer med lösningen om PostgreSQL försvinner?**
    - Om PostgresSQL försvinner kommer systemet i helhet inte fungera längre. Samtliga nya mätvärden kommer inte lagras och all historik blir oåtkomlig. De enda som kan läsas är cache.
