@@ -90,6 +90,13 @@ Resultatet ska bli '7 passed' - vilket betyder att samtliga tester har genomför
 ## CI-pipeline
 CI-piplinen är definierad med samtliga instruktioner i "ci.yml". Vid push eller pull-request triggas GitHub-actions. Alla beroenden installeras, tester körs och docker-image skapas. Grön markering visar att körningene gått igenom med lyckat resultat.  
 
+Flödet mer i detalj: 
+- Vid push eller pull-request triggas pipelinen
+- Hämtar koden (via actions/checkout@v4)
+- Installerar Python 3.12
+- Installerar alla beroenden från 'requirements.txt'
+- Kör alla tester med Pytest (i api-mappen)
+- Bygger Docker-image
 
 ## Kubernetes
 Kubernetes-delen körs med Minikube. API:t distribueras med tre Pod-repliker och en Service. Starta minikube och bygg imagen:
