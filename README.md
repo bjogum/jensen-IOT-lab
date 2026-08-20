@@ -23,7 +23,7 @@ För att köra projektet behövs:
 - git clone https://github.com/bjogum/jensen-IOT-lab.git
 ```
 
-**Starta**
+**Starta applikationen**
 ```bash
   - docker compose up --build -d
 ```
