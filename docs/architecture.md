@@ -1,9 +1,9 @@
 # Arkitekturdiagram
 
 ## API-systemet
-Diagrammet visar arkitekturen för APIt som helhet, där klienten kan fråga efter specifik data (GET request) och få svar tillbaka från APIt. Underst i diagrammet visas samtlig sensorer (som via simulatorn) postas och därmed hanteras av API som i sin tur distrubuerar vidare till databas och cache.
+Diagrammet visar arkitekturen för APIt som helhet, där klienten kan fråga efter specifik data (GET request) och få svar tillbaka från APIt. I diagrammet syns även en simulator med tre sensorer som postar data. Datan hanteras av API som i sin tur distrubuerar vidare till databas och cache.
 ![Arkitektur](api.png)
-
+      
 ## Kubernetes
 När en klient skickar en request hanteras den av Kubernetes service, som fördelar trafiken över de tre Poddana. Deployment ser till att Poddarna körs och att det finns tre repliker. Detta gör att systemet blir mer driftsäkert om någon Pod skulle kracha.
 ![Kubernetes](kub.png)
