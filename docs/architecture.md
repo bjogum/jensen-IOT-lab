@@ -38,3 +38,5 @@ Exemplet är vägledning, inte en mall som måste kopieras. Du kan göra ett sam
 4. Ersätt denna instruktion med en kort beskrivning av diagrammet och dina viktigaste arkitekturval.
 
 Kontrollera före inlämning att text och pilar går att läsa direkt från GitHub och att diagrammet stämmer med den kod du faktiskt lämnar in.
+
+
