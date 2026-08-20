@@ -138,11 +138,6 @@ minikube stop
 Kubernetes-delen är en introducerande demo där endast API:t distribueras. PostgreSQL, Redis och sensorsimulatorn körs fortfarande med Docker Compose och ingår inte i Kubernetes-deployen.
 
 
-## Begränsningar
-...
-...
-
-
 ## Svar från: "Grundläggande SQL-uppgifter"
 #### Tre SQL frågor
 - SELECT COUNT(*) FROM measurements;
