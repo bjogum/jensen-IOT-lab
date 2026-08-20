@@ -19,13 +19,19 @@ För att köra projektet behövs:
 
 ## Hur applikationen används
 **Klona repot**
+```bash
 - git clone https://github.com/bjogum/jensen-IOT-lab.git
+```
 
 **Starta**
+```bash
   - docker compose up --build -d
+```
 
 **Kör tester**
+```bash
   - docker compose exec api python -m pytest -q
+```
 
 **Begränsningar**
   - ...
