@@ -113,7 +113,26 @@ Vänta tills alla tre poddar är aktiva `READY` & `1/1`. För att sen nå tjäns
 ```bash
 minikube service jensen-iot-api
 ```
-
+Webbläsaren bör nu öppnas automatiskt, om inte - hämta aktuell URL här:
+```bash
+minikube service jensen-iot-api --url
+```
+Se samtliga Poddar:
+```bash
+kubectl get pods
+```
+Radera en valfri pod:
+```bash
+kubectl delete pod <podnamn>
+```
+För att verifiera att deplyment ersätter den raderade med en ny (målet är tre aktiva replikor):
+```bash
+kubectl get pods -w
+```
+Avsluta minikube med:
+```bash
+minikube stop
+```
 
 ## Kända begränsningar
 Kubernetes-delen är en introducerande demo där endast API:t distribueras. PostgreSQL, Redis och sensorsimulatorn körs fortfarande med Docker Compose och ingår inte i Kubernetes-deployen.
