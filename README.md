@@ -8,7 +8,7 @@ API:t körs med Docker Compose tillsammans med PostgreSQL, Redis och simulatorn.
 
 Kubernetes används för containerorkestrering. API:t körs med tre Poddar (repliker) och en Service som fördelar trafiken mellan dem.
 
-[Länk till projektets arkitektur](https://github.com/bjogum/jensen-IOT-lab/blob/main/docs/architecture.md)
+[**Länk till projektets arkitektur**](https://github.com/bjogum/jensen-IOT-lab/blob/main/docs/architecture.md)
 
 
 **Förutsättningar**
@@ -114,9 +114,9 @@ kubectl scale deployment jensen-iot-api --replicas=3
 ```
 
 ## Kända begränsningar
-Sensorerna som skickar data till API:t är simulerade (via `simulator.py`). Inga fysiska sensorer används i projektet.
+- Sensorerna som skickar data till API:t är simulerade (via `simulator.py`). Inga fysiska sensorer används i projektet.
 
-Kubernetes-delen är en förenklad lösning där endast API:t distribueras. PostgreSQL, Redis och simulatorn körs fortfarande med Docker Compose och distribueras inte till Kubernetes.
+- Kubernetes-delen är en förenklad lösning där endast API:t distribueras. PostgreSQL, Redis och simulatorn körs fortfarande med Docker Compose och distribueras inte till Kubernetes.
 
 
 ## Övrigt komplettering för labben
