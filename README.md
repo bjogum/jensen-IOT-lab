@@ -1,7 +1,6 @@
 # Jensen IoT-Labb
 
 ## Beskrivning
-**Allmänt**
 
 Projektet är en enkel IoT-plattform där tre simulerade sensorer skickar temperatur, luftfuktighet och batterinivå till ett REST API. API:t bygger på en Flask-applikation som validerar datan och lagrar mätningarna i PostgreSQL. Redis används som cache för den senaste mätningen.
 
@@ -21,13 +20,10 @@ För att köra projektet behövs:
 - Minikube och kubectl
 
 ## Hur applikationen används
-**Klona repot**
+**Klona repot och starta projektet**
 ```bash
 git clone https://github.com/bjogum/jensen-IOT-lab.git
-```
-
-**Starta applikationen**
-```bash
+cd jensen-IOT-lab
 docker compose up --build -d
 ```
 
@@ -67,27 +63,17 @@ Dessa endpoints går att använda för att hämta specifik data från API:t
 - `/statistics`
 - `/devices/<device-ID>/latest` (ersätt `<device-ID>` med specifik sensor)
 
-**Kontrollera cache**
+**Databas och cache**
 
-Redis lagrar cache för de senaste mätvärdet för respektive sensor. Kontrollera vilka sensorer som finns lagrade i cache:
-
-```bash
-docker compose exec redis redis-cli KEYS "latest:*"
-```
-Töm Redis helt och prova gör en ny kontroll
-```bash
-docker compose exec redis redis-cli FLUSHDB
-```
-
+PostgreSQL används som permanent lagring av sensorer och mätningar. Redis används som cache för den senaste mätningen per sensor. Vid en cache miss hämtas värdet från PostgreSQL och skrivs tillbaka till Redis.
 
 
 ## Kör tester
-
 Projektets tester körs med pytest och kontrollerar valideringen av inkommande sensordata. För att köra testerna använd:
 ```bash
 docker compose exec api python -m pytest -q
 ```
-Resultatet ska bli '7 passed' - vilket betyder att samtliga tester har genomförts med lyckat resultat.
+Resultatet ska bli '7 passed' - vilket betyder att samtliga tester har genomförts med lyckat resultat. CI-piplinen kör dessa tester automatiskt vid push och pull request.
 
 
 ## CI-pipeline
@@ -102,43 +88,34 @@ Flödet mer i detalj:
 - Bygger Docker-image
 
 ## Kubernetes
-Kubernetes-delen körs med Minikube. API:t distribueras med tre Pod-repliker och en Service. Starta minikube och bygg imagen:
+API:t distribueras lokalt med Minikube. Kubernetes-konfigurationen består av en Deployment och en Service. Starta minikube och bygg imagen:
 ```bash
 minikube start --driver=docker
-minikube status
 minikube image build -t jensen-iot-api:lab ./api
 kubectl apply -f k8s/deployment.yaml
 kubectl apply -f k8s/service.yaml
+```
+
+Kontrollera Pods:
+```bash
 kubectl get pods
 ```
 
-Vänta tills alla tre poddar är aktiva `READY` & `1/1`. För att sen nå tjänsten använd:
+Öppna APIt med:
 ```bash
 minikube service jensen-iot-api
 ```
-Webbläsaren bör nu öppnas automatiskt, om inte - hämta aktuell URL här:
+
+**Scaling och self-healing**
+
+Deploymenten kör tre repliker. En borttagen Pod ersätts automatiskt av Kubernetes. Antalet repliker kan även ändras:
 ```bash
-minikube service jensen-iot-api --url
-```
-Se samtliga Poddar:
-```bash
-kubectl get pods
-```
-Radera en valfri pod:
-```bash
-kubectl delete pod <podnamn>
-```
-För att verifiera att deplyment ersätter den raderade med en ny (målet är tre aktiva replikor):
-```bash
-kubectl get pods -w
-```
-Avsluta minikube med:
-```bash
-minikube stop
+kubectl scale deployment jensen-iot-api --replicas=5
+kubectl scale deployment jensen-iot-api --replicas=3
 ```
 
 ## Kända begränsningar
-Sensorerna som skickar data till APIt är simulerade (via `simulator.py`). Inga fysiska sensorer används i projektet.
+Sensorerna som skickar data till API:t är simulerade (via `simulator.py`). Inga fysiska sensorer används i projektet.
 
 Kubernetes-delen är en förenklad lösning där endast API:t distribueras. PostgreSQL, Redis och simulatorn körs fortfarande med Docker Compose och ingår inte i Kubernetes-distributionen.
 
