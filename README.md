@@ -11,7 +11,7 @@ Kubernetes används för containerorkestrering. API:t körs med tre Poddar (repl
 [**Länk till projektets arkitektur**](https://github.com/bjogum/jensen-IOT-lab/blob/main/docs/architecture.md)
 
 
-**Förutsättningar**
+## Förutsättningar
 
 För att köra projektet behövs:
 - Docker och Docker Compose
