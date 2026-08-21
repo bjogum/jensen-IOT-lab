@@ -1,7 +1,7 @@
 # Arkitekturdiagram
 
 ## API-systemet
-Diagrammet visar den övergripande arkitekturen för IoT-plattformen. Tre simulerade sensorer skickar mätdata till REST API:t via HTTP POST /measurements. API:t validerar datan och lagrar mätningarna permanent i PostgreSQL. Den senaste mätningen per sensor sparas även i Redis som cache.
+Diagrammet visar den övergripande arkitekturen för IoT-plattformen. Tre simulerade sensorer skickar mätdata till API:t via `HTTP POST /measurements`. API:t validerar datan och lagrar mätningarna permanent i PostgreSQL. Den senaste mätningen per sensor sparas även i Redis som cache.
 
 Klienter kan hämta data från API:t via GET-anrop. PostgreSQL används för beständig historik medan Redis används för snabb åtkomst till den senaste mätningen. Flödet från sensorerna till API:t och vidare till PostgreSQL är det huvudsakliga write-heavy-flödet.
 ![Arkitektur](api.png)
