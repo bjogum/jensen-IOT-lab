@@ -138,20 +138,27 @@ minikube stop
 ```
 
 ## Kända begränsningar
-Kubernetes-delen är en enklare lösning där endast API:t distribueras. PostgreSQL, Redis och simulatorn körs fortfarande med Docker Compose och ingår inte i detta projektet.
+Sensorerna som skickar data till APIt är simulerade (via `simulator.py`). Inga fysiska sensorer används i projektet.
 
+Kubernetes-delen är en förenklad lösning där endast API:t distribueras. PostgreSQL, Redis och simulatorn körs fortfarande med Docker Compose och ingår inte i Kubernetes-distributionen.
 
 
 ## Övrigt komplettering för labben
 #### Grundläggande SQL-uppgifter - tre SQL frågor
-- SELECT COUNT(*) FROM measurements;
-  - Visar antal mätningar (totalt)
+Visar antal mätningar (totalt):
+```bash
+SELECT COUNT(*) FROM measurements;
+```
 
-- SELECT AVG("temperature") FROM measurements;
-  - Visar medeltemperaturen från samtliga mätningar
+Visar medeltemperaturen från samtliga mätningar
+```bash
+SELECT AVG("temperature") FROM measurements;
+``` 
 
-- SELECT * FROM measurements WHERE created_at >= NOW() - INTERVAL '24 hours';
-  - Visar alla mätningar som skapats senaste 24h
+Visar alla mätningar som skapats senaste 24h
+```bash
+SELECT * FROM measurements WHERE created_at >= NOW() - INTERVAL '24 hours';
+```
 
 #### Länk till reflektioner
 
