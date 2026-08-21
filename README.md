@@ -56,11 +56,10 @@ http://localhost:5001/
 
 **Implementerade endpoints**
 
-Dessa endpoints går att använda för att hämta specifik data från API:t
 - `/health`
 - `/devices`
 - `/measurements`
-- `/statistics`
+- `/statistics` - visar statistik över mätningarna
 - `/devices/<device-ID>/latest` (ersätt `<device-ID>` med specifik sensor)
 
 **Databas och cache**
@@ -77,7 +76,7 @@ Resultatet ska bli '7 passed' - vilket betyder att samtliga tester har genomför
 
 
 ## CI-pipeline
-CI-piplinen är definierad med samtliga instruktioner i "ci.yml". Vid push eller pull-request triggas GitHub-actions. Alla beroenden installeras, tester körs och docker-image skapas. Grön markering visar att körningene gått igenom med lyckat resultat.  
+CI-piplinen är definierad med samtliga instruktioner i "ci.yml". Vid push eller pull-request triggas GitHub-actions. Alla beroenden installeras, tester körs och docker-image skapas. Grön markering visar att körningen gått igenom med lyckat resultat.  
 
 Flödet mer i detalj: 
 - Vid push eller pull-request triggas pipelinen
@@ -117,7 +116,7 @@ kubectl scale deployment jensen-iot-api --replicas=3
 ## Kända begränsningar
 Sensorerna som skickar data till API:t är simulerade (via `simulator.py`). Inga fysiska sensorer används i projektet.
 
-Kubernetes-delen är en förenklad lösning där endast API:t distribueras. PostgreSQL, Redis och simulatorn körs fortfarande med Docker Compose och ingår inte i Kubernetes-distributionen.
+Kubernetes-delen är en förenklad lösning där endast API:t distribueras. PostgreSQL, Redis och simulatorn körs fortfarande med Docker Compose och distribueras inte till Kubernetes.
 
 
 ## Övrigt komplettering för labben
