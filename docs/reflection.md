@@ -37,5 +37,3 @@ Svara kort men motiverat på samtliga frågor. Knyt svaren till vad du implement
 
 10. **När hade Kubernetes varit overkill för en lösning?**
    - Kubernetes hade varit överflödigt för en liten lösning med få tjänster, där Docker Compose räcker.
-
-Spara svaren i denna fil. Arkitekturdiagrammet lämnas separat enligt `docs/architecture.md`.
