@@ -111,7 +111,8 @@ Deploymenten kör tre repliker. En borttagen Pod ersätts automatiskt av Kuberne
 ```bash
 kubectl scale deployment jensen-iot-api --replicas=5
 ```
-Scriptet ovan ändrar antal repliker till fem stycken (enl. `--replicas=5`). Återställ till tre genom:
+Scriptet ovan ändrar antal repliker till fem stycken (enl. `--replicas=5`). 
+Återställ till tre  replikor genom:
 ```bash
 kubectl scale deployment jensen-iot-api --replicas=3
 ```
