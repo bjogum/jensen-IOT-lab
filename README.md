@@ -111,9 +111,7 @@ Deploymenten kör tre repliker. En borttagen Pod ersätts automatiskt av Kuberne
 ```bash
 kubectl scale deployment jensen-iot-api --replicas=5
 ```
-Scriptet ovan ändrar antal repliker till fem stycken (enl. `--replicas=5`). 
-
-Återställ till tre  replikor genom:
+Scriptet ovan ändrar antal repliker till fem stycken (enl. `--replicas=5`). Återställ till tre  replikor genom:
 ```bash
 kubectl scale deployment jensen-iot-api --replicas=3
 ```
@@ -141,6 +139,6 @@ Visar alla mätningar som skapats senaste 24h
 SELECT * FROM measurements WHERE created_at >= NOW() - INTERVAL '24 hours';
 ```
 
-#### Länk till reflektioner
+#### Reflektioner
 
-[Reflektioner](https://github.com/bjogum/jensen-IOT-lab/blob/main/docs/reflection.md)
+[Länk till reflektioner](https://github.com/bjogum/jensen-IOT-lab/blob/main/docs/reflection.md)
