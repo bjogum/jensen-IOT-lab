@@ -141,4 +141,4 @@ SELECT * FROM measurements WHERE created_at >= NOW() - INTERVAL '24 hours';
 
 #### Reflektioner
 
-[Länk till reflektioner](https://github.com/bjogum/jensen-IOT-lab/blob/main/docs/reflection.md)
+[**Länk till reflektioner**](https://github.com/bjogum/jensen-IOT-lab/blob/main/docs/reflection.md)
