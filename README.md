@@ -57,19 +57,19 @@ http://localhost:5001/
 
 **Implementerade endpoints**
 
-- `/health`
+`/health`
 ```bash
 http://localhost:5001/health
 ```
-- `/devices`
+`/devices`
 ```bash
 http://localhost:5001/devices
 ```
-- `/measurements`
+`/measurements`
 ```bash
 http://localhost:5001/measurements
 ```
-- `/statistics` - visar statistik över mätningarna:
+`/statistics` - visar statistik över mätningarna:
 
 - Medelvärde, fukt
 - Medelvärde, temperatur
@@ -81,7 +81,7 @@ http://localhost:5001/measurements
 ```bash
 http://localhost:5001/statistics
 ```
-- `/devices/<device-ID>/latest` (ersätt `<device-ID>` med specifik sensor). Exempelvis:
+`/devices/<device-ID>/latest` (ersätt `<device-ID>` med specifik sensor). Exempelvis:
 ```bash
 http://localhost:5001//devices/sensor-002/latest
 ```
