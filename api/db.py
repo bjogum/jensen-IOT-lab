@@ -79,6 +79,22 @@ def get_statistics():
     sql_avg_hum = """
         SELECT AVG("humidity") AS avg_hum FROM measurements;
     """
+
+    sql_highest_avg_temp_sensor = """
+        SELECT device_id, AVG(temperature) AS avg_temperature
+        FROM measurements
+        GROUP BY device_id
+        ORDER BY avg_temperature DESC
+        LIMIT 1;
+    """
+
+    sql_most_active_sensor = """
+        SELECT device_id, COUNT(*) AS measurement_count
+        FROM measurements
+        GROUP BY device_id
+        ORDER BY measurement_count DESC
+        LIMIT 1;
+    """
     cursor.execute(sql_cnt_device)
     cnt_device = cursor.fetchone()
 
@@ -91,6 +107,11 @@ def get_statistics():
     cursor.execute(sql_avg_hum)
     avg_hum = cursor.fetchone()
 
+    cursor.execute(sql_highest_avg_temp_sensor)
+    highest_tmp_sens = cursor.fetchone()
+
+    cursor.execute(sql_most_active_sensor)
+    most_act = cursor.fetchone()
     
     cursor.close()
     conn.close()
@@ -99,7 +120,9 @@ def get_statistics():
         "total_devices": cnt_device["device_cnt"],
         "total_measurements": cnt_meas["meas_cnt"],
         "average_temperature": avg_tmp["avg_tmp"],
-        "average_humidity": avg_hum["avg_hum"]
+        "average_humidity": avg_hum["avg_hum"],
+        "higest_average_temp_sensor": highest_tmp_sens["highest_avg_temp_sensor"],
+        "moste_active_sensore" : most_act["most_active_sensor"]
     }
 
 
