@@ -145,9 +145,8 @@ Kontrollera att antal Pods återställts till tre (de överflödiga står som `T
 kubectl get pods
 ```
 
-**Avsluta**
+**Avsluta projektet**
 
-Avsluta projektet:
 ```bash
 minikube stop
 docker compose down -v
