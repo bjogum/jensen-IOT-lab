@@ -136,6 +136,8 @@ minikube service jensen-iot-api
 - Scaling handlar om att anpassa antalet replicas/Pods efter behovet. Manuellt eller automatiskt.
 - Self-healing handlar om att Kubernetes automatiskt återställer antal Pods till önskat tillstånd, om exempelvis en Pod krachar så ska den ersättas så att rätt antal repliker upprättshålls.
 
+*Prova scaling*
+
 Här körs tre repliker. Antalet repliker kan ändras genom att uppdatera Deploymentens `replicas`-värde.
 
 Öka antalet repliker till fem stycken:
@@ -156,6 +158,19 @@ Kontrollera att antal Pods återställts till tre (de överflödiga står som `T
 ```bash
 kubectl get pods
 ```
+
+*Prova self-healing*
+
+Ta bort en Pod som är `RUNNING` med hjälp av följande kommando. Ersätt <pod-namn> med namnet från en av Poddarna som körs. 
+```bash
+kubectl delete pod <pod-namn>
+```
+
+Kontrollera antal Pods. Lägg märke till att den borttagna Podden har bytt status till `Terminating`. Samtidigt skapas en ny Pod för att säkerställa att rätt antal Pods är aktiva. Detta är self-healing – även om en Pod kraschar eller tas bort, ser Kubernetes till att det önskade antalet Pods återställs och att driften kan fortsätta.
+```bash
+kubectl get pods
+```
+
 
 ## Avsluta projektet
 
