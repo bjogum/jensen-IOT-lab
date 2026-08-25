@@ -9,7 +9,7 @@ API:t körs med Docker Compose tillsammans med PostgreSQL, Redis och simulatorn.
 Kubernetes används för containerorkestrering. API:t körs med tre Poddar (repliker) och en Service som fördelar trafiken mellan dem.
 
 [**Länk till projektets arkitektur**](https://github.com/bjogum/jensen-IOT-lab/blob/main/docs/architecture.md)
-
+[**Länk till reflektioner**](https://github.com/bjogum/jensen-IOT-lab/blob/main/docs/reflection.md)
 
 ## Förutsättningar
 
@@ -202,7 +202,3 @@ I projektet har jag även implementerat två olika SQL-analyser enligt nedan:
         LIMIT 1;
 Båda dessa SQL-analyser grupperar mätningarna per sensor med `GROUP BY device_id`. De sorteras med hjälp av `ORDER BY` i fallande ordning med högsta värdet överst. Därefter används `LIMIT 1` för att endast identifiera *en* sensor. 
 Dessa analyser används och presenteras i API-endpointen `/statistics`.
-
-#### Reflektioner
-
-[**Länk till reflektioner**](https://github.com/bjogum/jensen-IOT-lab/blob/main/docs/reflection.md)
