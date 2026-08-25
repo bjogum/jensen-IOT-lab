@@ -188,19 +188,20 @@ I projektet har jag även implementerat två olika SQL-analyser enligt nedan:
 
 -   Vilken sensor som är mest aktiv (flest mätpunkter).
     ```sql
-        SELECT device_id, AVG(temperature) AS avg_temperature
-        FROM measurements
-        GROUP BY device_id
-        ORDER BY avg_temperature DESC
-        LIMIT 1;
--   Vilken sensor som har den högsta medeltemperaturen.
-    ```sql
         SELECT device_id, COUNT(*) AS measurement_count
         FROM measurements
         GROUP BY device_id
         ORDER BY measurement_count DESC
         LIMIT 1;
-Båda dessa SQL-analyser grupperar mätningarna per sensor med `GROUP BY device_id` och används i API-endpointen `/statistics`.
+-   Vilken sensor som har den högsta medeltemperaturen.
+    ```sql
+        SELECT device_id, AVG(temperature) AS avg_temperature
+        FROM measurements
+        GROUP BY device_id
+        ORDER BY avg_temperature DESC
+        LIMIT 1;
+Båda dessa SQL-analyser grupperar mätningarna per sensor med `GROUP BY device_id`. De sorteras med hjälp av `ORDER BY` i fallande ordning med högsta värdet överst. Därefter används `LIMIT 1` för att endast identifiera *en* sensor. 
+Dessa analyser används och presenteras i API-endpointen `/statistics`.
 
 #### Reflektioner
 
