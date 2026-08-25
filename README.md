@@ -200,7 +200,7 @@ I projektet har jag även implementerat två olika SQL-analyser enligt nedan:
         GROUP BY device_id
         ORDER BY measurement_count DESC
         LIMIT 1;
-Båda dessa SQL-analyser presenteras i endpointen `/statistics` för API:et. De 
+Båda dessa SQL-analyser grupperar mätningarna per sensor med `GROUP BY device_id` och används i API-endpointen `/statistics`.
 
 #### Reflektioner
 
