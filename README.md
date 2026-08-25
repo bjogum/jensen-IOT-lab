@@ -88,11 +88,11 @@ Projektets tester körs med pytest och kontrollerar valideringen av inkommande s
 ```bash
 docker compose exec api python -m pytest -q
 ```
-Resultatet ska bli '7 passed' - vilket betyder att samtliga tester har genomförts med lyckat resultat. CI-piplinen kör dessa tester automatiskt vid push och pull request.
+Resultatet ska bli `7 passed` - vilket betyder att samtliga tester har genomförts med lyckat resultat. Dessa tester kör CI-piplinen automatiskt vid push och pull request.
 
 
 ## CI-pipeline
-CI-piplinen är definierad med samtliga instruktioner i "ci.yml". Vid push eller pull-request triggas GitHub-actions. Alla beroenden installeras, tester körs och docker-image skapas. Grön markering visar att körningen gått igenom med lyckat resultat.  
+CI-piplinen är definierad med samtliga instruktioner i `ci.yml`. Vid push eller pull-request triggas GitHub-actions. Alla beroenden installeras, tester körs och docker-image skapas. Grön markering visar att körningen gått igenom med lyckat resultat.  
 
 Flödet mer i detalj: 
 - Vid push eller pull-request triggas pipelinen
@@ -130,6 +130,13 @@ kubectl scale deployment jensen-iot-api --replicas=5
 Scriptet ovan ändrar antal repliker till fem stycken (enl. `--replicas=5`). Återställ till tre  replikor genom:
 ```bash
 kubectl scale deployment jensen-iot-api --replicas=3
+```
+
+**Avsluta**
+
+Avsluta minikube:
+```bash
+minikube stop
 ```
 
 ## Kända begränsningar
