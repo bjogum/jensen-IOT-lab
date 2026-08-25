@@ -184,13 +184,16 @@ SELECT * FROM measurements WHERE created_at >= NOW() - INTERVAL '24 hours';
 ```
 
 #### Fördjupande SQL-analyser
-I projektet har jag även implementerat två SQL-analyser för att identifiera
+I projektet har jag även implementerat två olika SQL-analyser enligt nedan:
+
 -   Vilken sensor som är mest aktiv (flest mätpunkter).
-    -   `SELECT device_id, AVG(temperature) AS avg_temperature
-        FROM measurements
-        GROUP BY device_id
-        ORDER BY avg_temperature DESC
-        LIMIT 1;`
+    -   ```sql
+    SELECT device_id, AVG(temperature) AS avg_temperature
+    FROM measurements
+    GROUP BY device_id
+    ORDER BY avg_temperature DESC
+    LIMIT 1;
+
 -   Vilken sensor som har den högsta medeltemperaturen.
     -   `SELECT device_id, COUNT(*) AS measurement_count
         FROM measurements
