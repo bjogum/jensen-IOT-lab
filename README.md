@@ -74,7 +74,7 @@ http://localhost:5001/measurements
 - Medelvärde, fukt
 - Medelvärde, temperatur
 - Sensorn med högst medeltemperatur
-- Den mest aktiva sensorn
+- Sensorn med flest mätningar (mest aktiva) 
 - Totalt antal sensorer
 - Totalt antal mätningar
 

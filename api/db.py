@@ -121,7 +121,7 @@ def get_statistics():
         "total_measurements": cnt_meas["meas_cnt"],
         "average_temperature": avg_tmp["avg_tmp"],
         "average_humidity": avg_hum["avg_hum"],
-        "highest_average_temp_sensor": highest_tmp_sens["avg_temperature"],
+        "highest_average_temp_sensor": highest_tmp_sens["device_id"],
         "most_active_sensor": most_act["device_id"]
     }
 
