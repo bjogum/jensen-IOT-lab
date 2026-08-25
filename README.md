@@ -134,9 +134,10 @@ kubectl scale deployment jensen-iot-api --replicas=3
 
 **Avsluta**
 
-Avsluta minikube:
+Avsluta projektet:
 ```bash
 minikube stop
+docker compose down -v
 ```
 
 ## Kända begränsningar
