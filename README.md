@@ -115,6 +115,7 @@ Kontrollera Pods:
 ```bash
 kubectl get pods
 ```
+En lista med tre repliker (Pods) ska nu synas och vara `RUNNING`
 
 Öppna APIt med:
 ```bash
