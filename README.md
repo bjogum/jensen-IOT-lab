@@ -75,7 +75,7 @@ http://localhost:5001/measurements
 - Medelvärde, fukt
 - Medelvärde, temperatur
 - Sensorn med högst medeltemperatur [se `Fördjupande SQL-analyser` nedan]
-- Sensorn med flest mätningar /mest aktiva [se `Fördjupande SQL-analyser` nedan]
+- Sensorn med flest mätningar / den mest aktiva [se `Fördjupande SQL-analyser` nedan]
 - Totalt antal sensorer
 - Totalt antal mätningar
 
@@ -195,7 +195,7 @@ Jag har i API:et implementerat endpointen `/statistics` som presenterar viss sta
 - Medelvärde, fukt
 - Medelvärde, temperatur
 - Sensorn med högst medeltemperatur [se `Fördjupande SQL-analyser` nedan]
-- Sensorn med flest mätningar /mest aktiva [se `Fördjupande SQL-analyser` nedan]
+- Sensorn med flest mätningar / den mest aktiva [se `Fördjupande SQL-analyser` nedan]
 - Totalt antal sensorer
 - Totalt antal mätningar
 
