@@ -145,7 +145,7 @@ Kontrollera att antal Pods återställts till tre (de överflödiga står som `T
 kubectl get pods
 ```
 
-**Avsluta projektet**
+##Avsluta projektet
 
 ```bash
 minikube stop
