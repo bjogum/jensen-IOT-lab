@@ -115,7 +115,7 @@ Kontrollera Pods:
 ```bash
 kubectl get pods
 ```
-En lista med tre repliker (Pods) ska nu synas och vara `RUNNING`
+En lista med tre repliker (Pods) ska nu visas och vara `RUNNING`
 
 Öppna APIt med:
 ```bash
@@ -128,9 +128,19 @@ Deploymenten kör tre repliker. En borttagen Pod ersätts automatiskt av Kuberne
 ```bash
 kubectl scale deployment jensen-iot-api --replicas=5
 ```
+
+Kontrollera att antal Pods har ökat från tre till fem:
+```bash
+kubectl get pods
+```
+
 Scriptet ovan ändrar antal repliker till fem stycken (enl. `--replicas=5`). Återställ till tre  replikor genom:
 ```bash
 kubectl scale deployment jensen-iot-api --replicas=3
+```
+Kontrollera att antal Pods återställts till tre (de överflödiga står som `Terminating` ett tag innan de raderas):
+```bash
+kubectl get pods
 ```
 
 **Avsluta**
