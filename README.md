@@ -183,6 +183,23 @@ Visar alla mätningar som skapats senaste 24h
 SELECT * FROM measurements WHERE created_at >= NOW() - INTERVAL '24 hours';
 ```
 
+#### Fördjupande SQL-analyser
+I projektet har jag även implementerat två SQL-analyser för att identifiera
+-   Vilken sensor som är mest aktiv (flest mätpunkter).
+    -   `SELECT device_id, AVG(temperature) AS avg_temperature
+        FROM measurements
+        GROUP BY device_id
+        ORDER BY avg_temperature DESC
+        LIMIT 1;`
+-   Vilken sensor som har den högsta medeltemperaturen.
+    -   `SELECT device_id, COUNT(*) AS measurement_count
+        FROM measurements
+        GROUP BY device_id
+        ORDER BY measurement_count DESC
+        LIMIT 1;`
+  
+Båda dessa SQL-analyser presenteras i endpointen `/statistics` för API:et. 
+
 #### Reflektioner
 
 [**Länk till reflektioner**](https://github.com/bjogum/jensen-IOT-lab/blob/main/docs/reflection.md)
