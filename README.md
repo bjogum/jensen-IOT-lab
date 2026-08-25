@@ -210,8 +210,8 @@ Jag har implementerat endpointen `/statistics` som presenterar viss statistik ö
 
 - Medelvärde, fukt
 - Medelvärde, temperatur
-- Sensorn med högst medeltemperatur [se `Fördjupande SQL-analyser` nedan]
-- Sensorn med flest mätningar / den mest aktiva [se `Fördjupande SQL-analyser` nedan]
+- Sensorn med högst medeltemperatur [se `SQL-analyser` nedan]
+- Sensorn med flest mätningar / den mest aktiva [se `SQL-analyser` nedan]
 - Totalt antal sensorer
 - Totalt antal mätningar
 
