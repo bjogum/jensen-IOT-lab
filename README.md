@@ -133,7 +133,10 @@ minikube service jensen-iot-api
 
 **Scaling och self-healing**
 
-Deploymenten kör tre repliker. Om en Pod kraschar ersätter Kubernetes den automatiskt, så att det önskade antalet repliker upprätthålls. Antalet repliker kan även ändras genom att uppdatera Deploymentens `replicas`-värde.
+- Scaling handlar om att anpassa antalet replicas/Pods efter behovet. Manuellt eller automatiskt.
+- Self-healing handlar om att Kubernetes automatiskt återställer antal Pods till önskat tillstånd, om exempelvis en Pod krachar så ska den ersättas så att rätt antal repliker upprättshålls.
+
+Här körs tre repliker. Antalet repliker kan ändras genom att uppdatera Deploymentens `replicas`-värde.
 
 Öka antalet repliker till fem stycken:
 ```bash
