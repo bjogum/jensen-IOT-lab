@@ -47,7 +47,7 @@ För senaste 50 loggarna:
 ```bash
 docker compose logs --tail=50 api simulator
 ```
-sensor-003 är opålitlig, och skickar emellanåt korrupt data, vilket resulterar i status "400". Korrekta värden som accepteras, retunerar status "201". 
+sensor-003 skickar emellanåt korrupt data (genererade fel med flit), vilket resulterar i status "400". Korrekta värden som accepteras, retunerar status "201". 
 
 ## API-dashboard
 För att visa `API dashboarden` - öppna adressen nedan i din webbläsare:
