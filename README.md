@@ -9,6 +9,7 @@ API:t körs med Docker Compose tillsammans med PostgreSQL, Redis och simulatorn.
 Kubernetes används för containerorkestrering. API:t körs med tre Poddar (repliker) och en Service som fördelar trafiken mellan dem.
 
 [**Länk till projektets arkitektur**](https://github.com/bjogum/jensen-IOT-lab/blob/main/docs/architecture.md)
+
 [**Länk till reflektioner**](https://github.com/bjogum/jensen-IOT-lab/blob/main/docs/reflection.md)
 
 ## Förutsättningar
