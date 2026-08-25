@@ -187,7 +187,20 @@ Visar alla mätningar som skapats senaste 24h
 SELECT * FROM measurements WHERE created_at >= NOW() - INTERVAL '24 hours';
 ```
 
-#### Fördjupande SQL-analyser
+#### Fördjupningar
+**Implementerad endpont `/statistics`**
+
+Jag har i API:et implementerat endpointen `/statistics` som presenterar viss statistik över mätningarna. Den statistik som presenteras är följande:
+
+- Medelvärde, fukt
+- Medelvärde, temperatur
+- Sensorn med högst medeltemperatur [se `Fördjupande SQL-analyser` nedan]
+- Sensorn med flest mätningar /mest aktiva [se `Fördjupande SQL-analyser` nedan]
+- Totalt antal sensorer
+- Totalt antal mätningar
+
+**SQL-analyser**
+
 I projektet har jag även implementerat två olika SQL-analyser enligt nedan:
 
 -   Vilken sensor som är mest aktiv (flest mätpunkter).
