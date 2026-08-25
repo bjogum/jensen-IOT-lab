@@ -187,18 +187,17 @@ SELECT * FROM measurements WHERE created_at >= NOW() - INTERVAL '24 hours';
 I projektet har jag även implementerat två olika SQL-analyser enligt nedan:
 
 -   Vilken sensor som är mest aktiv (flest mätpunkter).
-    -   ```sqlSELECT device_id, AVG(temperature) AS avg_temperature
+    ```sqlSELECT device_id, AVG(temperature) AS avg_temperature
         FROM measurements
         GROUP BY device_id
         ORDER BY avg_temperature DESC
         LIMIT 1;
-
 -   Vilken sensor som har den högsta medeltemperaturen.
-    -   `SELECT device_id, COUNT(*) AS measurement_count
+    ```sqlSELECT device_id, COUNT(*) AS measurement_count
         FROM measurements
         GROUP BY device_id
         ORDER BY measurement_count DESC
-        LIMIT 1;`
+        LIMIT 1;
   
 Båda dessa SQL-analyser presenteras i endpointen `/statistics` för API:et. 
 
