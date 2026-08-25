@@ -206,7 +206,7 @@ SELECT * FROM measurements WHERE created_at >= NOW() - INTERVAL '24 hours';
 ## Fördjupningar
 **Implementerad endpont `/statistics`**
 
-Jag har i API:et implementerat endpointen `/statistics` som presenterar viss statistik över mätningarna. Den statistik som presenteras är följande:
+Jag har implementerat endpointen `/statistics` som presenterar viss statistik över mätningarna. Den statistik som presenteras är följande:
 
 - Medelvärde, fukt
 - Medelvärde, temperatur
