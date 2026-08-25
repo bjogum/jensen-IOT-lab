@@ -124,7 +124,7 @@ minikube service jensen-iot-api
 
 **Scaling och self-healing**
 
-Deploymenten kör tre repliker. En borttagen Pod ersätts automatiskt av Kubernetes. Antalet repliker kan även ändras:
+Deploymenten kör tre repliker. En borttagen Pod ersätts automatiskt av Kubernetes. Ändra antalet repliker till fem stycken:
 ```bash
 kubectl scale deployment jensen-iot-api --replicas=5
 ```
@@ -134,7 +134,7 @@ Kontrollera att antal Pods har ökat från tre till fem:
 kubectl get pods
 ```
 
-Scriptet ovan ändrar antal repliker till fem stycken (enl. `--replicas=5`). Återställ till tre  replikor genom:
+Återställ till tre  replikor genom:
 ```bash
 kubectl scale deployment jensen-iot-api --replicas=3
 ```
