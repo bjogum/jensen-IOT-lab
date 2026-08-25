@@ -32,9 +32,9 @@ docker compose up --build -d
 docker compose ps
 ```
 Följande tjänster ska nu köras:
- - jensen-iot-redis 
- - jensen-iot-db
  - jensen-iot-api
+ - jensen-iot-db
+ - jensen-iot-redis
  - jensen-iot-simulator
 
 **Kontrollera simulator-loggen**
@@ -47,6 +47,7 @@ För senaste 50 loggarna:
 ```bash
 docker compose logs --tail=50 api simulator
 ```
+sensor-003 är opålitlig, och skickar emellanåt korrupt data, vilket resulterar i status "400". Korrekta värden som accepteras, retunerar status "201". 
 
 ## API-dashboard
 För att visa `API dashboarden` - öppna adressen nedan i din webbläsare:
@@ -57,10 +58,25 @@ http://localhost:5001/
 **Implementerade endpoints**
 
 - `/health`
+```bash
+http://localhost:5001/health
+```
 - `/devices`
+```bash
+http://localhost:5001/devices
+```
 - `/measurements`
+```bash
+http://localhost:5001/measurements
+```
 - `/statistics` - visar statistik över mätningarna
-- `/devices/<device-ID>/latest` (ersätt `<device-ID>` med specifik sensor)
+```bash
+http://localhost:5001/statistics
+```
+- `/devices/<device-ID>/latest` (ersätt `<device-ID>` med specifik sensor). Exempelvis:
+```bash
+http://localhost:5001//devices/sensor-002/latest
+```
 
 **Databas och cache**
 
