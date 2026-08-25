@@ -136,7 +136,7 @@ Kontrollera att antal Pods har ökat från tre till fem:
 kubectl get pods
 ```
 
-Återställ till tre  replikor genom:
+Återställ till tre  repliker genom:
 ```bash
 kubectl scale deployment jensen-iot-api --replicas=3
 ```
