@@ -70,12 +70,12 @@ http://localhost:5001/devices
 ```bash
 http://localhost:5001/measurements
 ```
-`/statistics` - visar statistik över mätningarna:
+`/statistics` - visar statistik över mätningarna: [se även `Fördjupningar`]
 
 - Medelvärde, fukt
 - Medelvärde, temperatur
-- Sensorn med högst medeltemperatur [se `Fördjupande SQL-analyser` nedan]
-- Sensorn med flest mätningar / den mest aktiva [se `Fördjupande SQL-analyser` nedan]
+- Sensorn med högst medeltemperatur 
+- Sensorn med flest mätningar / den mest aktiva
 - Totalt antal sensorer
 - Totalt antal mätningar
 
