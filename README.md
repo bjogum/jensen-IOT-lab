@@ -72,7 +72,7 @@ http://localhost:5001/measurements
 ```
 `/statistics` - visar statistik över mätningarna: [se även `Fördjupningar`]
 
-- Medelvärde, fukt
+- Medelvärde, fuktighet
 - Medelvärde, temperatur
 - Sensorn med högst medeltemperatur 
 - Sensorn med flest mätningar / den mest aktiva
@@ -206,14 +206,14 @@ SELECT * FROM measurements WHERE created_at >= NOW() - INTERVAL '24 hours';
 ## Fördjupningar
 **Implementerad endpont `/statistics`**
 
-Jag har implementerat endpointen `/statistics` som presenterar viss statistik över mätningarna. Den statistik som presenteras är följande:
+Jag har implementerat endpointen `/statistics` i API:t, som presenterar statistik över mätningarna. De sex mätvärden som presenteras är följande:
 
-- Medelvärde, fukt
-- Medelvärde, temperatur
-- Sensorn med högst medeltemperatur [se `SQL-analyser` nedan]
-- Sensorn med flest mätningar / den mest aktiva [se `SQL-analyser` nedan]
-- Totalt antal sensorer
-- Totalt antal mätningar
+1. Medelvärde, fuktighet
+2. Medelvärde, temperatur
+3. Sensorn med högst medeltemperatur [se `SQL-analyser` nedan]
+4. Sensorn med flest mätningar / den mest aktiva [se `SQL-analyser` nedan]
+5. Totalt antal sensorer
+6. Totalt antal mätningar
 
 **SQL-analyser**
 
