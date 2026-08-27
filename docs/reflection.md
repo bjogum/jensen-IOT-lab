@@ -18,7 +18,7 @@ Svara kort men motiverat på samtliga frågor. Knyt svaren till vad du implement
    - Om PostgresSQL försvinner kommer systemet i helhet inte fungera längre. Samtliga nya mätvärden kommer inte lagras och all historik blir oåtkomlig. De enda som kan läsas är cache.
 
 6. **Varför används Docker Compose lokalt?**
-   - För att kunna köra hela applikationen lokalt med alla tjänster och beroenden i en gemensam miljö.
+   - För att kunna köra hela applikationen lokalt med alla tjänster och beroenden i en gemensam, isolerad miljö.
 
 7. **Vad automatiserar din CI-pipeline?**
    - CI-pipelinen automatiserar allt jag definierat i .github/workflows/ci.yml - vilket är:
